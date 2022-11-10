@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SimulacroExamen01</string>
+    <string name="paquete_de_cigarros">PAQUETE DE CIGARROS</string>
+    <string name="cambiar">Cambiar</string>
 </resources>

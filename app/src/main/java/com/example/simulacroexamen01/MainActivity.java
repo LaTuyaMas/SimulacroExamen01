@@ -8,12 +8,20 @@ import android.view.View;
 
 import com.example.simulacroexamen01.databinding.ActivityMainBinding;
 
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    private int cigarros;
-    private int dinero;
+    private final int cantidad_cigarros = 20;
+    private final int precio_paquete = 5;
+
+    private int cigarros = 20;
+    private int dinero = 0;
+
+    //Formato numeros
+    private NumberFormat numberFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        cigarros = 20;
-        dinero = 0;
+        numberFormat = NumberFormat.getCurrencyInstance();
 
         actualizarVistas();
 
@@ -36,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
                     actualizarVistas();
                 }
                 else {
-                    cigarros = 20;
-                    dinero += 5;
+                    cigarros = cantidad_cigarros;
+                    dinero += precio_paquete;
                     actualizarVistas();
                 }
             }
@@ -46,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void actualizarVistas(){
         binding.txtContadorMain.setText(String.valueOf(cigarros));
-        binding.txtAhorradoMain.setText(String.valueOf(dinero));
+        binding.txtAhorradoMain.setText(numberFormat.format(dinero));
     }
 
     @Override
